@@ -3,18 +3,17 @@ pipeline {
 
     stages {
 
-
-
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t devops-app .'
+                dir('devops-project') {   // 👈 ADD THIS
+                    sh 'docker build -t devops-app .'
+                }
             }
         }
 
         stage('Stop Old Container') {
             steps {
-                sh 'docker stop devops-container || true'
-                sh 'docker rm devops-container || true'
+                sh 'docker rm -f devops-container || true'
             }
         }
 
