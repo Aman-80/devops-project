@@ -5,7 +5,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                dir('devops-project') {   // 👈 ADD THIS
+                dir('devops-project') {
                     sh 'docker build -t devops-app .'
                 }
             }
